@@ -1,0 +1,64 @@
+
+\subsection{Schmidt Decomposition:}
+ let $\ket{\phi}$ be a state in a Hilbert space $\mathcal{H}$, then the Schmidt rank of the state written in Schmidt decomposition $\ket{\phi}=\sum_j \alpha_j \ket{j^A} \ket{j^B}$ is the number of nonzero $\alpha_j$ parameters. Let $\ket{\phi}$ be a state, the Schmidt rank of the state is denoted by rk($\ket{\phi}$).
+\subsection{Mixed States}
+It is not always known what exact pure state is occupied by a given
+quantum system. In this case, all that is known is the set of possible pure states and probabilities of the pure states occurring. Therefore, it is important to consider classically probabilistic distribution
+amongst the pure states. This distribution gives rise to the set of
+mixed states.\\
+Let $\{\phi_i\}_{i=1}^k$ be a set of pure states in a Hilbert space $\mathcal{H}$, then any convex combination of the pure states yields a mixed state. The mixed states are represented by convex combinations of the outer products of pure states known as density matrices.
+\begin{equation}
+    \rho=\sum_{i=1}^k p_i \ket{\phi_i}\bra{\phi_i} \text{ where } p_i \geq 0 \text{ and } \sum_{i=1}^k p_i = 1
+\end{equation}
+From the duality of matrices and linear operators, it follows that
+the mixed states are linear operators and hence, the term density operator is often used to refer to a mixed state. From the definition of
+mixed states, it immediately follows that all pure states are mixed.
+However, the converse does not hold. In fact, the statement can be
+further generalised to the following theorem showing the relation
+between the set of mixed states and the set of pure states. A mixed state $\rho$ is a pure state if and only if there is a single
+pure state in the convex combination of the mixed state $\rho$. Therefore, we end up with the statement that pure states are extremal points of the convex set. 
+
+\subsection{Trace}
+The trace of $O$ is a map $\mathrm{Tr}:\mathcal{L}(\mathcal{H})\rightarrow\mathbb{C}$
+defined as the sum of the diagonal elements of $O$ when it is represented
+in a certain basis $|\psi_{j}\rangle\in\mathcal{H}$, i.e., $\mathrm{Tr}(O)=\sum_{j=1}^{d}\langle\psi_{j}|O|\psi_{j}\rangle,$
+with $d$ being the dimension of $\mathcal{H}$.
+The trace of a density matrix representation of a pure state is related to its inner product as it holds that $Tr(\ket{\phi}\bra{\phi}) = \braket{\phi}{\phi}$ = 1. The trace can also help determine whether a given density matrix $\rho$ is a matrix for a pure state or a mixed state. It suffices to compute
+the trace of the square of density matrix as it holds for all density
+matrices that Tr($\rho^2$) $\leq$ 1 and the trace is equal to 1 if and only if the state is pure.\cite{Arfken}.
+It was already discussed that trace of a density matrix representation of a pure state is related to its inner product and hence, it is
+always 1. In fact, trace of all mixed states is always 1. Furthermore,
+every density matrix of trace 1 corresponds to a mixed state. Therefore, mixed states form a convex set.
+\subsection{Partial Trace}
+By its turn, in the quantum mechanics of composite systems with Hilbert
+space $\mathcal{H}=\mathcal{H}_{a}\otimes\mathcal{H}_{b}$, the \emph{partial
+trace function}, taken over sub-system $b$, can be defined as \cite{Watrous}
+\begin{equation}
+\mathrm{Tr}_{b}(O)=\sum_{j=1}^{d_{b}}(\mathbb{I}_{a}\otimes\langle b_{j}|)O(\mathbb{I}_{a}\otimes|b_{j}\rangle),\label{eq:ptr1}
+\end{equation}
+with
+\begin{equation}
+|b_{j}\rangle=[b_{j1}\mbox{ }b_{j2}\mbox{ }\cdots\mbox{ }b_{jd_{b}}]^{t}
+\end{equation}
+being any orthonormal basis for $\mathcal{H}_{b}$, $\langle b_{j}|=|b_{j}\rangle^{\dagger}$,
+$d_{b}=\dim\mathcal{H}_{b}$, and $\mathbb{I}_{b}$ is the identity
+operator in $\mathcal{H}_{b}$. So the
+partial trace is a map
+\begin{equation}
+\mathrm{Tr}_{b}:\mathcal{L}(\mathcal{H})\rightarrow\mathcal{L}(\mathcal{H}_{a});
+\end{equation}
+
+It is worthwhile observing here that the definition above is equivalent
+to \emph{another definition} which appears frequently in the literature
+\cite{Nielsen_Chuang_2010}:
+\begin{equation}
+\mathrm{Tr}_{b}(|a\rangle\langle a'|\otimes|b\rangle\langle b'|)=|a\rangle\langle a'|\otimes\mathrm{Tr}_{b}(|b\rangle\langle b'|).\label{eq:ptr_def2}
+\end{equation}
+
+Partial trace is the only function $f:\mathcal{L}(\mathcal{H}_{a}\otimes\mathcal{H}_{b})\rightarrow\mathcal{L}(\mathcal{H}_{a})$
+such that $\mathrm{Tr}_{ab}(A\otimes\mathbb{I}_{b}O)=\mathrm{Tr}_{a}(Af(O))$,
+for generic linear operators $A\in\mathcal{L}(\mathcal{H}_{a})$ and
+$O\in\mathcal{L}(\mathcal{H}_{a}\otimes\mathcal{H}_{b})$ and it holds that 
+\begin{equation}
+    Tr_{b}(\mathcal{L^A} \otimes \mathcal{L^B}) = \mathcal{L^A}Tr(\mathcal{L^B})
+\end{equation}

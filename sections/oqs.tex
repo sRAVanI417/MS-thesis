@@ -1,0 +1,448 @@
+\begin{comment}
+    The study on quantum phenomenon is always observed using a closed system. But in reality, the system we live in is in contact with environment and is not exclusive from it. It means that the system is not isolated and the effect of the environment is there on the system. Due to this, it is crucial to develop a theoretical framework to interact and understand the quantum system.When we consider a pure state, there is no unitary evolution implemented on the state to convert it from a pure state to a mixed state. We find that the purity of the state is conserved in a unitary operation. But there are legitimate physical processes that constitute the transition from a pure state to a mixed state.Open quantum system can be defined as a quantum system that is in continuous interaction with the environment(which is also a quantum system).In this report, we study how to better formulate the interactions as these interactions with the environment significantly change the dynamics of the system and result in quantum dissipation.Applying the concepts learnt from open quantum systems, we can better understand the system, develop better tools to add the environment effect into the interaction while evolution occurs, remove the same when focus is needed on the system alone and make the theoretical interactions match the physical counterparts.
+\end{comment}
+\subsection{Composite Systems:}
+    
+   To talk about the evolution of open systems, we can consider the system to be a part of a larger closed system that is undergoing a Unitary evolution. This larger closed system consists of a subsystem that is of interest to us, and another subsystem which is the environment. Then, the total system can be denoted as follows:
+   \begin{equation}
+        \ket{\rho} = \ket{\rho_{system}} \otimes \ket{\rho_{environment}}
+    \end{equation}
+    Let the Hilbert spaces of the system and environment be as follows:
+    \begin{equation}
+        \mathcal{H_S} = span{\ket{s_i}}
+    \end{equation}
+    \begin{equation}
+        \mathcal{H_E} = span{\ket{e_j}}
+    \end{equation}
+    Then the Hilbert space of the total system will be the tensor product of the individual spaces.
+    \begin{equation}
+        \mathcal{H} = \mathcal{H_S} \otimes \mathcal{H_E} 
+                    = span{\ket{s_i} \otimes \ket{e_j}}
+    \end{equation}
+    
+   This total system is evolved with the help of a global unitary and then, we can remove the environment from our description by the use of partial trace.
+
+    \item\textbf{Global Unitary:}
+    
+    Let us define a Unitary $U_g$ that acts on the composite system $\rho = \ket{\rho_{system}} \otimes \ket{\rho_{environment}}$ such that it is not acting seperately on each of the systems.
+    i.e.,
+    \begin{equation}
+        U_g \neq U_{system} \otimes U_{environment}
+    \end{equation}
+    We shall define the $U_g$ as follows:
+    \begin{equation}
+        U_g = \sum_{i} \ket{s_i} \bra{e_i}
+    \end{equation}
+    where $\ket{s_i}$ is the basis expressing the system and $\ket{e_j}$ to be the basis expressing the environment.
+    Let us check if $U_g$ is unitary or not.
+    \begin{equation}
+    U_g^\dagger U_g = (\sum_i \ket{e_i} \bra{s_i})(\sum_j \ket{s_j} \bra{e_j})
+    \end{equation}
+    \begin{equation}
+        = \sum_j\ket{e_j}\bra{e_j} = I
+    \end{equation}
+    Also,
+    \begin{equation}
+    U_gU_g^\dagger = (\sum_{i} \ket{s_i} \bra{e_i})(\sum_j \ket{e_j} \bra{s_j})
+    \end{equation}
+    \begin{equation}
+        = \sum_i\ket{s_i}\bra{s_i} = I
+    \end{equation}
+    For the composite system $\rho$, the unitary $U_g$ will act as follows:
+    \begin{equation}
+        U_g\rho_{system} \otimes \rho_{environment}U_g^\dagger
+    \end{equation}
+\item\textbf{Partial Trace:}
+
+For any operator corresponding to the tensor product Hilbert space $\mathcal{H} = \mathcal{H_A} \otimes \mathcal{H_B}$(say), the partial trace is a linear operator that maps from the total Hilbert space to the Hilbert space of the system that is of interest, i.e., $\mathcal{H} \rightarrow \mathcal{H_A}$. For an operator $O_{AB}$ corresponding to the hilbert space $\mathcal{H}$, the partial trace acts as follows:
+\begin{equation} \label{eq:12}
+    Tr_B(O_{AB}) = \sum_i I \otimes \bra{v_i}_B O_{AB} I \otimes \ket{v_i}_B
+\end{equation}
+This equation means that on an operator $O_{AB}$, on the first subsystem, I is applied, and on the second subsystem, the trace operation $Tr(B) = \sum_i \bra{v_i} B \ket{v_i}$ is being applied.Here ${\ket{v_i}}$ forms a complete set of orthonormal basis vectors.
+Since trace is a reduction operator, the partial trace of B on a total system of M $\times$ N dimensions with A being 1 $\times$ M dimensions and B being 1 $\times$ N dimensions will result in the dimensions of A i.e., 1 $\times$ M
+We understand the work of partial trace on the total system by considering two extreme cases of combination of system and environment.
+\begin{enumerate}
+    \item \textbf{Case 1: System and Environment are completely separate}
+    
+    In this case, system and environment form a tensor product(i.e., $\rho = \rho_{s} \otimes \rho_{e}$). The density operator of the total system obtained by partial trace would be the same as the system contributed in the tensor product.
+    
+\begin{equation}
+    Tr_B[\rho] = Tr(\rho_s \otimes \rho_e) = \rho_{s} Tr_B[\rho_e] = \rho_{s} 
+\end{equation}
+    \item \textbf{Case 2: System and Environment are maximally entangled}
+    
+    In this case, the total system contains no separate information about system or environment. Therefore, we can't gain any knowledge on only system or only environment. Henceforth, the partial trace of the system from the total system also gives $I_A/2$ as the result.
+\end{enumerate}
+\end{enumerate}
+\section{Evolution of the Open Quantum System:}
+\subsection{General Form of the Quantum Evolution:}
+We have a total system SE consisting of system S and environment E. As discussed, the evolution of the total system is given by a global unitary $U_g$. Let the initial state of the total system be represented by a density matrix $\rho(0)$. Using the Schr\"{o}dinger equation,
+\begin{equation}
+   \rho(t) = U(t)\rho(0)U^\dagger(t)
+\end{equation}
+After the evolution, we can extract the system from the total system by performing a partial trace over the environment. i.e.,
+\begin{equation}
+    \rho_s(t) = Tr_E[\rho(t)]
+\end{equation}
+\begin{equation}
+    \implies \rho_s(t) = Tr_E[U(t)\rho(0)U^\dagger(t)]
+\end{equation}
+The initial state of the total system is considered to be a tensor product of the system and environment ($\rho(0) = \rho_s(0) \otimes \rho_e(0)$) as we assume that the system and environment are uncorrelated (have not interacted with each other) before $U_g$ was applied.
+\begin{equation}
+    \implies \rho_s(t) = Tr_E[U(t)\rho_s(0) \otimes \rho_e(0)U^\dagger(t)]
+\end{equation}
+This is called the General form of quantum evolution. 
+
+\subsection{Kraus Representation:}
+In this representation, we try to find a more intact form of the general form.
+We consider the environment in it's spectral form as follows:
+\begin{equation} \label{eq:18}
+    \rho_e(0) = \sum_i \lambda_i \ket{\epsilon_i}\bra{\epsilon_i}
+\end{equation}
+\begin{equation}
+    \rho(0) = \rho_s(0) \otimes \sum_i \lambda_i \ket{\epsilon_i}\bra{\epsilon_i}
+\end{equation}
+Using this representation in \ref{eq:18},
+\begin{equation}
+    \rho_s(t) = Tr_E[U_g(t)\rho_s(0) \otimes \sum_i \lambda_i \ket{\epsilon_i}\bra{\epsilon_i}U_g^\dagger(t)]
+\end{equation}
+Also expanding on the partial trace (\ref{eq:12}),
+\begin{equation}
+\begin{aligned}
+    \rho_s(t) &= \sum_j I \otimes \bra{\epsilon_j} U_g \rho(0) U_g^\dagger I \otimes \ket{\epsilon_j} \\
+    & = \sum_j I \otimes \bra{\epsilon_j} U_g \rho_s(0) \otimes \sum_i \lambda_i \ket{\epsilon_i}\bra{\epsilon_i} U_g^\dagger I \otimes \ket{\epsilon_j} \\
+    &= \sum_{i,j} \lambda_i I \otimes \bra{\epsilon_j} U_g I \otimes \ket{\epsilon_i} \rho_s(0) I \otimes \bra{\epsilon_i} U_g^\dagger I \otimes \ket{\epsilon_j} \\
+    &= \sum_{i,j} (\sqrt{\lambda_i} I \otimes \bra{\epsilon_j} U_g I \otimes \ket{\epsilon_j}) \rho_s(0) (\sqrt{\lambda_i} I \otimes \bra{\epsilon_j} U_g I \otimes \ket{\epsilon_i})^\dagger
+\end{aligned}
+\end{equation}
+This equation can be considered as
+\begin{equation}
+    \rho_s(t) = \sum_s K_s \rho_s(0) K_s^\dagger
+\end{equation}
+where, 
+\begin{equation}
+\begin{aligned}
+    K_s &= \sqrt{\lambda_i} I \otimes \bra{\epsilon_j} U_g I \otimes \ket{\epsilon_j} \\
+    K_s\dagger &= \sqrt{\lambda_i} I \otimes \bra{\epsilon_i} U_g^\dagger I \otimes \ket{\epsilon_j} 
+\end{aligned}
+\end{equation}
+This representation of $\rho(t)$ is defined as Kraus Operator Sum Representation
+\begin{equation}
+\begin{aligned}
+    \implies K_s\dagger K_s &= \lambda_i I \otimes \bra{\epsilon_i} U_g^\dagger I \otimes \ket{\epsilon_j} I \otimes \bra{\epsilon_j} U_g I \otimes \ket{\epsilon_i}
+\end{aligned}
+\end{equation}
+\begin{equation}
+\begin{aligned}
+    \sum_s K_s\dagger K_s &= \sum_i \lambda_i I \otimes \bra{\epsilon_i} U_g^\dagger I \otimes \sum_j \ket{\epsilon_j} \bra{\epsilon_j} U_g I \otimes \ket{\epsilon_i} \\
+    & = \sum_i \lambda_i I \otimes \bra{\epsilon_i} U_g^\dagger U_g I \otimes \ket{\epsilon_i} \\
+    & = I \otimes \sum_i \lambda_i \bra{\epsilon_i} \ket{\epsilon_i} \\
+    & = I
+\end{aligned}
+\end{equation}
+This means that the Kraus operators are Trace Preserving operators.i.e.,
+
+with $\rho_f = \sum_s K_s \rho_i K-s^\dagger$,
+\begin{equation}
+    \begin{aligned}
+        Tr (\rho_f) &= Tr(\sum_s K_s \rho_i K_s^\dagger) \\
+        & = Tr(\rho_i \sum_s K_s^\dagger K_s) \\
+        & = Tr(\rho_i)
+    \end{aligned}
+\end{equation}
+
+The Kraus representation is described as a Completely Positive Trace Preserving Map. It is an operator sum representation that has the ability to evolve one part of a bipartite system. If a system A starts out in a state $\ket{psi}$ unentangled with B and then interacts with B, then the resultant density matrix of A can be extracted by tracing out B. We can also think of this in a way that system B is measured in $\ket A$ and the outcomes were not recorded. That means, the collapse of states has occured but the outcome is lost too. So we are forced to average over all possible post measurement states weighted by their probabilities.
+
+\subsection{Quantum Channels}
+The superoperator that is CPTP or linear map is called a quantum channel. Quantum channel is given its name in deference to the traditions and terminology of classical communication theory. We may imagine that the quantum channel describes the fate of quantum information that is transmitted with some loss of fidelity from a sender to a reciever. Every quantum channel $\mathcal{E} : \rho \rightarrow \rho^{'}$ satisfies a few properties such as:
+\begin{enumerate}
+    \item \textbf{Linearity}
+    \begin{equation}
+        \mathcal{E}(\alpha \rho_1 + \beta \rho_2) = \alpha\mathcal{E}(\rho_1) + \beta\mathcal{E}(\rho_2)
+    \end{equation}
+    \item \textbf{Hermiticity Preservation}
+    \begin{equation}
+        \text{if } \rho = \rho^{\dagger} \text{ then } \mathcal{E}(\rho) = \mathcal{E}(\rho)^{\dagger} 
+    \end{equation}
+    \item \textbf{Positivity Preservation}
+    \begin{equation}
+        \text{if } \rho \geq 0 \text{ then } \mathcal{E}(\rho) \geq 0 
+    \end{equation}
+    \item \textbf{Trace Preservation}
+    \begin{equation}
+        \text{if } Tr(\mathcal{E}(\rho)) = Tr(\rho) 
+    \end{equation}
+    \item \textbf{Complete Positivity}
+    After the channel maps the linear operator from $\mathcal{H_A}$ to $\mathcal{H_B}$, and if we extend the input Hilbert space to $\mathcal{H_A} \otimes \mathcal{H_B}$, and if $\mathcal{E} \otimes I$ still maps to a positive operator, the channel $\mathcal{E}$ is completely positive.
+\end{enumerate}
+To explain this further, we should understand below three channels.
+\begin{enumerate}
+    \item \textbf{Depolarizing channel}
+    It is a model of a decohering qubit which, with probability 1-p stays intact, and with probability p, contains an error of any of the three types.The three errors are characterised by \begin{enumerate}
+        \item Bit flip error: $\ket{0}$ becomes $\ket{1}$ or $\ket{1}$ becomes $\ket{0}$. This error can be signified by $\sigma_x$ operator.
+         \item Phase flip error: $\ket{0}$ stays to be $\ket{0}$ but $\ket{1}$ becomes $-\ket{1}$. This error can be signified by $\sigma_z$ operator.
+          \item Combined error: $\ket{0}$ becomes $i\ket{1}$ or $\ket{1}$ becomes $-i\ket{0}$. This error can be signified by $\sigma_y$ operator.
+    \end{enumerate}
+    Hence, we can express the error occurance as an emsemble of three states all occuring with equal likelihood.
+    \begin{enumerate}
+        \item Unitary Operation:
+        \begin{equation}
+        \begin{aligned}
+            U_{SE} &= \ket{\psi}_S \otimes \ket{\psi}_E \\
+            & = \sqrt{1-p}\ket{\psi} \otimes \ket{0}_E + \sqrt{\frac{p}{3}}[\sigma_x\ket{\psi_S} \otimes \ket{1}_E + \sigma_y\ket{\psi_S} \otimes \ket{2}_E + \sigma_z\ket{\psi_S} \otimes \ket{3}_E]
+        \end{aligned}
+        \end{equation}
+        \item Kraus Operators:
+        \begin{equation}
+            \begin{aligned}
+                &M_0 = \sqrt{1-p}I \text{, }
+                M_1 = \sqrt{\frac{p}{3}}\sigma_x \text{, }
+                M_2 = \sqrt{\frac{p}{3}}\sigma_y \text{, }
+                M_3 = \sqrt{\frac{p}{3}}\sigma_z \\
+                &\text{The density matrix evolves as } \rho \rightarrow \rho^{'} = (1-p)\rho + \frac{p}{3}[\sigma_x\rho\sigma_x + \sigma_y\rho\sigma_y + \sigma_z\rho\sigma_z]
+            \end{aligned}
+        \end{equation}
+    \end{enumerate}
+    \item \textbf{Phase Damping channel}
+    This example provides a revealing caricature of decoherence in realistic physical situations, with all inessential mathematical details stripped away.
+    \begin{enumerate}
+        \item {Unitary Operation:}
+        \begin{equation}
+        \begin{aligned}
+            \ket{0}_S\ket{0}_E \rightarrow \sqrt{1-p}\ket{0}_S\ket{0}_E + \sqrt{p}\ket{0}_S\ket{1}_E \\
+            \ket{1}_S\ket{0}_E \rightarrow \sqrt{1-p}\ket{1}_S\ket{0}_E + \sqrt{p}\ket{1}_S\ket{2}_E
+        \end{aligned}
+        \end{equation}
+        \item {Kraus Operators:}
+        \begin{equation}
+        \begin{aligned}
+            M_0 = \sqrt{1-p}
+            M_1 = \begin{pmatrix}
+1 & 0\\
+0 & \sqrt{1-p}
+\end{pmatrix}, M_2 = \begin{pmatrix}
+0 & 0\\
+0 & \sqrt{p}
+\end{pmatrix} \\
+\text{The density matrix evolves as } \rho \rightarrow \rho^{'} &= M_0\rho M_0^{\dagger} + M_1\rho M_1^{\dagger} + M_2\rho M_2^{\dagger} \\
+& = (1-p)\rho + p\begin{pmatrix}
+\rho_{00} & 0\\
+0 & \rho_{11}
+\end{pmatrix} \\
+& = \begin{pmatrix}
+\rho_{00} & (1-p)\rho_{01}\\
+(1-p)\rho_{10} & \rho_{11}
+\end{pmatrix}
+        \end{aligned}
+        \end{equation}
+    \end{enumerate}
+    \item \textbf{Amplitude Damping Channel}
+    It is a schematic model of the decay of an excited state of a (two level) atom due to spontaneous emission of a photon.
+    \begin{enumerate}
+        \item {Unitary Operation:}
+        \begin{equation}
+        \begin{aligned}
+            \ket{0}_S\ket{0}_E \rightarrow \ket{0}_S\ket{0}_E \\
+            \ket{1}_S\ket{0}_E \rightarrow \sqrt{1-p}\ket{1}_S\ket{0}_E + \sqrt{p}\ket{0}_S\ket{1}_E
+        \end{aligned}
+        \end{equation}
+        \item {Kraus Operators:}
+        $M_0$ describes how the state evolves with no quantum jump. $M_1$ induces the quantum jump.i.e., the decay from $\ket{1}_A$ to $\ket{0}_A$
+        \begin{equation}
+        \begin{aligned}
+            M_0 = \begin{pmatrix}
+1 & 0\\
+0 & \sqrt{1-p}
+\end{pmatrix}, M_1 = \begin{pmatrix}
+0 & \sqrt{p}\\
+0 & 0
+\end{pmatrix} \\
+\text{The density matrix evolves as } \rho \rightarrow \rho^{'} &= M_0\rho M_0^{\dagger} + M_1\rho M_1^{\dagger} \\
+& = \begin{pmatrix}
+\rho_{00} & \sqrt{1-p}\rho_{01}\\
+\sqrt{1-p}\rho_{10} & (1-p)\rho_{11}
+\end{pmatrix} + \begin{pmatrix}
+p\rho_{11} & 0 \\
+0 & 0
+\end{pmatrix} \\
+& = \begin{pmatrix}
+\rho_{00} + p\rho_{11} & \sqrt{1-p}\rho_{01}\\
+\sqrt{1-p}\rho_{10} & (1-p)\rho_{11}
+\end{pmatrix}
+        \end{aligned}
+        \end{equation}
+    \end{enumerate}
+\end{enumerate}
+\begin{comment}
+\section{Master equation for Open Quantum Systems}
+
+The operator sum representation of the density operator provides a general description of the de-coherent evolution(i.e., evolution of pure states to mixed states). Whereas, the Unitary operator evolution of the density operator provides a general description of coherent quantum evolution.
+
+The coherent/unitary evolution dynamics are always formulated by the use of Schr\"odinger's equation and the Hamiltonians. Similarly, the CPTP map dynamics of open quantum systems are formulated by the Master equation.
+
+We describe the evolution of a density operator $\rho_s$ in Hilbert space $\mathcal{H_S}$ using Schr\"odinger equation imagining the evolution to be unitary in extended Hilbert space. That doesn't guarantee that the evolution is Markovian or "local in time". We should also have the data of the state of the environment as the density operator $\rho(t+dt)$ depends not only on the system $\rho_s(t)$ but also on $\rho_s$ at the earlier times. We should note that the environment retains the memory of the information flow for a while, and can transfer it back to system after sometime, resulting in non-Markovian fluctuations of the system.
+
+We theoretically convert the Non-Markovian systems as a Markovian by denoting a time variable ($t_{res}$) that is needed for the environment to "forget" the information. Once t > $t_{res}$, we regard the information as forever lost and neglect it's possibility of coming back and influencing the system. This Markovian approximation would work well if the timescale of the observable is long compared to the $t_{res}$.
+\subsection{The Lindbladian/Liouvillian equation}
+
+We start with considering the Schr\"odinger equation for a closed system.
+Let $\ket{\psi(t)}$ be the state of a closed system at a given time t,
+\begin{equation}
+    \ket{\psi(t+dt)} = (I - idtH)\ket{\psi(t)}
+\end{equation}
+The same equation in the density operator representation becomes,
+\begin{equation}
+    \rho(t+dt) = \rho(t) - idt[H, \rho(t)]
+\end{equation}
+For an open system, we denote the evolution of the density operator with time as follows:
+\begin{equation}
+    \rho(t+dt) = \mathcal{E}_{dt}(\rho(t))
+\end{equation}
+Here $\mathcal{E}_{dt}$ is the quantum channel.
+By the adoption of the Markovian form, we assume that after each infinitesimal time increment in the joint evolution, the state of the environment is discarded and replaced by fresh states unentangled with the system.
+
+\begin{equation}
+    \rho_s(t+dt) = Tr_B(\rho_{SE}(t+dt)) \otimes \rho_E
+\end{equation}
+We assume a linear operator $\mathcal{L}$, as a generator of the superoperators which act like the Hamiltonian H does in the Schr\"odinger equation. We call this operator as the Lindbladian/ the Liouvillian.
+\begin{equation}
+    \rho^\cdot = \mathcal{L}|\rho|
+\end{equation}
+If $\mathcal{L}$ is independent of time, the formal solution for this equation could be,
+\begin{equation}
+    \rho(t) = \exp{\mathcal{L}t}|\rho(0)|
+\end{equation}
+The channel will have the operator sum representation as follows:
+\begin{equation}
+\begin{aligned}
+\rho(t+dt) &= \mathcal{E}_{dt}(\rho(t)) \\
+    & = \sum_a M_a \rho(t) M_a^{\dagger} \\
+    & = \rho(t) + O(dt) \\
+ \text{where } M_0 & = I + (-iH+K)dt \\
+ M_a & = \sqrt{dt}L_a, a = 1,2,3
+\end{aligned}
+\end{equation}
+The H and K values are both hermitian and $L_a$, H, K are of zeroth order in t.
+\begin{equation}
+    \begin{aligned}
+I &= \sum_{a=0} M_a M_a^{\dagger}  \text{ (Using the completeness condition)}   \\
+& = M_0^{\dagger}M_0 + \sum_a \sum_a M_a M_a^{\dagger} \\
+& = [I + (iH + K)dt][I + (-iH+K)dt] + dt\sum_a L_a L_a^{\dagger}
+\ket{0}
+    \end{aligned}
+\end{equation}
+Neglecting $dt^2$ and higher order terms,
+\begin{equation}
+    \begin{aligned}
+    I &= I + dt(2K + \sum_a L_a^{\dagger} L_a) \\
+    & \implies K = \frac{1}{2} \sum_a L_a^{\dagger} L_a \\
+    & \implies \rho(t+dt) - \rho(t) = \sum_{a=0} M_a \rho M_a^{\dagger} \\
+    & = M_0 \rho M_0^{\dagger} + \sum_a M_a \rho M_a^{\dagger} \\
+    & = -\frac{dt}{2} \sum_a L_a^{\dagger}L_a\rho -\frac{dt}{2} \sum_a \rho L_a^{\dagger}L_a + dt\sum_a L_a\rho L_a^{\dagger} \\
+    \frac{d\rho}{dt} &= -i[H,\rho] + \sum_a(L_a\rho L_a^{\dagger} -\frac{1}{2}L_a^{\dagger}L_a\rho - \frac{1}{2}\rho L_a^{\dagger}L_a)
+    \end{aligned}
+\end{equation}
+This is the general equation of the Markovian evolution Law for quantum states. This is also called as Lindbladian equation.
+\subsection{The master equation}
+Given a dynamical semi group, there exists, under certain mathematical conditions, a linear map $\mathcal{L}$, the generator of the semigroup, which allows to represent the semigroup in exponential form
+\begin{equation}
+    V(t) = \exp(\mathcal{L} t)
+\end{equation}
+This representation immediately yields a first order differential equation,
+\begin{equation}
+    \frac{d}{dt} \rho_s(t) = \mathcal{L} \rho_s(t)
+\end{equation}
+This equation is called Markovian master equation.
+The generator $\mathcal{L}$ may be regarded as a generalization of the Liouville super operator $\mathcal{L} = i[\rho, H]$
+We consider a finite dimensional Hilbert space $\mathcal{H_s}$ with dimension N.
+The corresponding Liouviille space is a complex space of $N^2$ and we choose a complex basis of orthonormal pperators $F_i, i = 1,2,3 \cdots N^2$ such that 
+\begin{equation}
+    (F_i, F_j) = Tr{F_i^{\dagger}F_j} = \delta_{ij}
+\end{equation}
+Let us choose the $F_{N^2}$ as $\frac{1}{\sqrt{N}}I_{N \times N}$ and $F_i$ as a traceless operator.
+
+For example, in 2 $\times$ 2 dimension, the $F_i$ operators can be constructed by Identity and Pauli matrices with $\frac{1}{\sqrt{2}}$. i.e.,
+\begin{equation}
+\begin{aligned}
+    F_0 = \frac{1}{\sqrt{2}}I \\
+    F_1 = \frac{1}{\sqrt{2}}\sigma_1 \\
+    F_2 = \frac{1}{\sqrt{2}}\sigma_2 \\
+    F_3 = \frac{1}{\sqrt{2}}\sigma_3 \\
+\end{aligned}
+\end{equation}
+
+Now the Kraus operators will be written in terms of the orthonormal basis ${F_i}$,
+\begin{equation}
+    \begin{aligned}
+        W_{\alpha \beta}(t) = \sum_{i=0}^{N^2} F_i (F_i, W_{\alpha \beta}(t))
+    \end{aligned}
+\end{equation}
+Then the dynamical map becomes,
+\begin{equation}
+    \begin{aligned}
+        \rho_s(t) &= V(t)\rho_s \\
+        & = \sum_{i,j=1}{N^2}c_{i j}(t) F_i \rho_s F_j^{\dagger} \\
+        where, c_{i j} = \sum_{\alpha \beta} (F_i, W_{\alpha \beta}(t))(F_j, W_{\alpha \beta}(t))^*
+    \end{aligned}
+\end{equation}
+The coefficient matrix c ${ = c_{i j}}$ is Hermitian and positive.
+\begin{equation}
+    \begin{aligned}
+        \bra{v} c \ket{v} &= \sum_{i j}c_{i j}v_i^*v_j \\
+        & = \sum v_i^*(F_i, W_{\alpha \beta}(t))v_j(F_j, W_{\alpha \beta}(t))^* \\
+        & = \sum_{\alpha \beta} |(v_i F_i, W_{\alpha \beta}(t))|^2 \geq 0
+    \end{aligned}
+\end{equation}
+
+Now the generator $\mathcal{L}$,
+\begin{equation} \label{eq:43}
+    \begin{aligned}
+        \mathcal{L}\rho_s &= \lim_{\epsilon \rightarrow 0} \frac{1}{\epsilon} [V(\epsilon)\rho_s - \rho_s] \\
+        & = \lim_{\epsilon \rightarrow 0} [\frac{1}{N} \frac{c_{N^2N^2}(\epsilon) - N}{\epsilon}\rho_s + \frac{1}{\sqrt{N}}\sum_{i=1}^{N^2 -1}(\frac{c_i N^2(\epsilon)}{\epsilon}F_i\rho_s + \frac{N^2c_i(\epsilon)}{\epsilon}\rho_s F_i^{\dagger}) + \sum_{i,j=1}^{N^2 -1}\frac{c_i j(\epsilon)}{\epsilon}F_i\rho_s F_j^{\dagger}]
+    \end{aligned}
+\end{equation}
+
+Let us define few variables for simplifying the equation,
+\begin{equation}
+    \begin{aligned}
+        a_{N^2N^2} &= \lim_{\epsilon \rightarrow 0} \frac{c_{N^2N^2}(\epsilon) - N}{\epsilon} \\
+        a_{i N^2} & = \lim_{\epsilon \rightarrow 0} \frac{c_{i N^2}(\epsilon)}{\epsilon} , i = 1,2, \cdots, N^2 -1 \\
+        a_{i j} & = \lim_{\epsilon \rightarrow 0} \frac{c_{i j}(\epsilon)}{\epsilon} , i,j = 1,2, \cdots, N^2 -1 \\
+        F & = \frac{1}{\sqrt{N}} \sum_{i=1}^{N^2 -1}a_{i N^2}F_i \\
+        G & = \frac{1}{\sqrt{2N}} a_{N^2 N^2}I_s + \frac{1}{2}(F^{\dagger} + F) \\
+        H & = \frac{1}{2i}(F^{\dagger} - F)
+    \end{aligned}
+\end{equation}
+Substituting all the defined values, the equation \ref{eq:43} results in,
+\begin{equation}
+    \begin{aligned}
+        \mathcal{L}\rho_s = -i[H, \rho_s] + {G, \rho_s} + \sum_{i,j = 1}^{N^2 - 1} a_{ij}F_i \rho_s F_j^{\dagger}
+    \end{aligned}
+\end{equation}
+Since the semigroup is trace preserving CPTP map,
+\begin{equation}
+    \begin{aligned}
+        Tr \mathcal{L}\rho_s &= 0 = Tr{G, \rho_s} + Tr(\sum_{ij}a{ij}F_i\rho_s F_j^{\dagger}) \\
+        & = Tr [(2G + \sum_{ij}a_{ij}F_j^{\dagger}F_i)\rho_s] \\
+        \text{Solving for G, we get } G = - \frac{1}{2} \sum_{ij}a_{ij}F_j^{\dagger}F_i
+    \end{aligned}
+\end{equation}
+
+This leads us to the general master equation as follows:
+\begin{equation}
+    \begin{aligned}
+        \rho_s^\cdot = \mathcal{L}\rho_s = -i[H, \rho] + \sum_{ij} a_{ij}(F_i \rho_s F_j^{\dagger} - \frac{1}{2}{F_j^{\dagger}F_i, \rho_s})
+    \end{aligned}
+\end{equation}
+
+Since the coefficient matrix $a_{ij}$ is positive, it is always diagonalizable.
+\begin{equation}
+    \begin{aligned}
+        \gamma = uau^{-1} \\
+        \text{and since } F_i = \sum_k u_{ki}A_k \\
+        \implies \rho_s^\cdot = -[H, \rho] + \sum_{k=1}^{N^2 - 1} \gamma_k(A_k\rho_sA_k^{\dagger} - \frac{1}{2}{A_k^{\dagger}A_k, \rho_s})
+    \end{aligned}
+\end{equation}
+
+This is the Markovian Master equation
+\end{comment}

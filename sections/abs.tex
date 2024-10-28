@@ -1,0 +1,45 @@
+\section{Separability}
+Quantum entanglement is the most powerful resource not only in information processing tasks but also in quantum computation. Here we begin our study in the backdrop of two-qubit systems.
+Let $\mathcal{H}^A$, $\mathcal{H}^B$ be Hilbert spaces and let $\ket{\phi} \epsilon$ $\mathcal{H}^A \otimes \mathcal{H}^B$ be a pure state. The state $\ket{\phi}$ is a product state in $\mathcal{H}$ = $\mathcal{H}^A \otimes \mathcal{H}^B$ if there are pure states $\ket{\phi}^A \epsilon \mathcal{H}^A$, $\ket{\phi}^A \epsilon \mathcal{H}^A$ such that 
+\begin{equation}
+    \ket{\phi} = \ket{\phi}^A \otimes \ket{\phi}^B
+\end{equation}
+A pure state $\ket{\phi}$ is separable if it is a product state in $\mathcal{H}$. Otherwise the state $\ket{\phi}$ is entangled.
+Similarly to pure states, entangled mixed states are the
+complement of separable mixed states. However, the definition of
+separable states is more complex as it is necessary to differentiate the
+definitions of product states and separable states.
+Let $\mathcal{H}^A$, $\mathcal{H}^B$ be Hilbert spaces and let $\rho$ be a mixed state over Hilbert space $\mathcal{H}^A \otimes \mathcal{H}^B$, then the state $\rho$ is a product state in $\mathcal{H}$ if there are mixed states $\rho^A \epsilon \mathcal{L}(\mathcal{H^A})$, $\rho^B \epsilon \mathcal{L}(\mathcal{H^B})$ such that
+\begin{equation}
+    \rho = \rho^A \otimes \rho^B
+\end{equation}
+
+Also, for product states ${\rho_i}$ where i=1,2...n, mixed state $\rho \epsilon \mathcal{L}(\mathcal{H})$ is separable if there are convex weights $p_i$>0, $\sum_i p_i = 1$ such that
+\begin{equation}
+    \rho = \sum_{i=1}^n p_i rho_i
+\end{equation}
+Also, if a state is not separable, then it is entangled.
+
+ Furthermore, from the definition of separable states, the set of separable states is a convex subset of the set of all mixed states. This leads to the geometrical representation of set of all mixed states as depicted in Figure
+2.1. The pure states lie on the edge of the whole set and the set of all
+separable states touches the edge of set of all states in infinitely many
+points as there is infinitely many separable pure states. The separable
+pure states cannot lie on the edge of subset of all separable states as
+depicted in Figure 2.1 since they are not convex combinations of any
+other states.
+
+\section{Absolute Separable States:}
+A quantum state is called absolute separable if any global unitary operation on the state does not result in entanglement. In other words, a bipartite absolute separable states  $\rho_{AB} \in \mathcal{H}_A \otimes \mathcal{H}_B$ is a state such that for all unitary matrices (or even with their successsive applications) $\mathcal{U} : \mathcal{H}_A \otimes \mathcal{H}_B \longrightarrow \mathcal{H}_A \otimes \mathcal{H}_B$, we have $\mathcal{U} \rho_{AB} \mathcal{U}^\dagger \in \mathcal{S}_{asep}$ where, $\mathcal{S}_{asep}$ is the set of all absolute separable states. The set of absolute separable states forms a convex and compact set \cite{GCM_14} and they play the role of free states in the resource theory of non-absolute separability \cite{PMD_22}. In general, it is a difficult task to detect AS states but for qubit-qudit dimension one can have a criterion based on the eigenvalues of the density matrix \cite{Hi_07, S_09, J_13}. In this case, the $2d$ eigenvalues, arranged in a non-increasing order, are $\{\lambda_i^{\downarrow}\}$ with $\sum_i \lambda_i^{\downarrow} =1$. Then a state is AS if and only if the eigenvalues accept the following condition,
+\begin{equation}
+    \lambda_1^{\downarrow} - \lambda_{2d-1}^{\downarrow} - 2\sqrt{\lambda_{2d-2}^{\downarrow} \lambda_{2d}^{\downarrow}} \leq 0
+    \label{AS_eigenvalue}
+\end{equation}
+The equality of the above equation holds for the states on the boundary of the convex set containing AS states \cite{HMD_21}. From the above inequality, the following consequences emerge immediately. 
+\begin{prop}
+    In $2\otimes d$ dimension, there exists no AS state with rank $(2d-2)$. \cite{HMD_21}
+    \label{prop1}
+\end{prop}
+\begin{proof}
+    The proof of the statement follows from \cite{HMD_21}. Note that, if we have a bipartite state $\rho_{AB}$ with rank $r(\rho_{AB}) \leq (2d-2)$, then we can write the $2d$ number of eigenvalues of the density matrix of $\rho_{AB}$ as, $\{\lambda_1^{\downarrow}, \lambda_2^{\downarrow}, \cdots, \lambda_{2d-2}^{\downarrow}, 0, 0\}$ without any loss of generality (the eigenvalues are arranged in a non-increasing manner). Hence using Eq.(\ref{AS_eigenvalue}), we have the condition on the largest eigenvalue as, $\lambda_1^{\downarrow} \leq 0$, which is not possible. So, one can conclude that there exists no rank $(2d-2)$ AS state in $2\otimes d$ dimension.
+\end{proof}
+\noindent Now let us consider the case when the rank of the state is $r(\rho_{AB})=(2d-1)$ and the eigenvalues can be written as, $\{\lambda_1^{\downarrow}, \lambda_2^{\downarrow}, \cdots, \lambda_{2d-1}^{\downarrow}, 0\}$. In this case, we have $\lambda_1^{\downarrow} \leq \lambda_{2d-1}^{\downarrow}$ from Eq.(\ref{AS_eigenvalue}). As the eigenvalues are already arranged in non-increasing order, we can set, $\lambda_1^{\downarrow}=\lambda_2^{\downarrow} \cdots= \lambda_{2d-1}^{\downarrow} = \lambda$ (say). Hence, $\lambda=\frac{1}{2d-1}$ as, $\sum_i \lambda_i^{\downarrow} =1$. For example, in a bipartite qubit system, we can have a state $\rho_{AB}=\frac{1}{3} (\ket{00}\bra{00}+\ket{01}\bra{01}+\ket{10}\bra{10})$. Note that from the eigenvalue condition, it is clear that this state resides on the boundary of the convex set in that dimension. At the beginning of our calculation, we consider such types of states and see the action of switching unitary on them. 
